@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(16)
-app.config['UPLOAD_FOLDER'] = 'G:/clg/keel/PA@/uploads'
+app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'cc'}
 
 
@@ -44,7 +44,7 @@ def upload():
 @app.route('/compile')
 def compile():
     try:
-        output = subprocess.check_output(['python', 'compile.py'])
+        output = subprocess.check_output(['python3', 'compile.py'])
     except subprocess.TimeoutExpired:
         return render_template('error.html', message='Compilation took too long.')
 
